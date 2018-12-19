@@ -11,8 +11,12 @@
 	<groupId>com.upm.es</groupId>
 	<artifactId>grupof</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+
 	<name>grupof</name>
-	<description>Demo project for Spring Boot</description>
+	<url>http://piedrafita.ls.fi.upm.es:8080/grupof/</url>
+
+	<packaging>war</packaging>
+	<description>F Group final project for MUII </description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -40,12 +44,49 @@
 	</dependencies>
 
 	<build>
+		<pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<formats>
+						<format>html</format>
+						<format>xml</format>
+					</formats>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>post-clean</phase>
+						<goals>
+							<goal>cobertura</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<server>tomcat7</server>
+					<url>http://piedrafita.ls.fi.upm.es:8080/manager/text</url>
+					<username>admin-script</username>
+					<password>prof2018upm</password>
+					<path>/${project.artifactId}</path>
+					<update>true</update>
+				</configuration>
+			</plugin>
+
 		</plugins>
+		</pluginManagement>
 	</build>
 
 </project>
