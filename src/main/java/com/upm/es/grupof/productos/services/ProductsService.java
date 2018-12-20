@@ -2,6 +2,7 @@ package com.upm.es.grupof.productos.services;
 
 
 import com.upm.es.grupof.productos.database.DataBaseLoader;
+import com.upm.es.grupof.productos.entities.Category;
 import com.upm.es.grupof.productos.entities.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,15 @@ public class ProductsService {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public void createProduct(Product product) throws Exception {
+
+		if (this.dataBase.getProductByName(product.getName()) == null){
+			this.dataBase.createProd(product);
+
+		}
+
 	}
 
 

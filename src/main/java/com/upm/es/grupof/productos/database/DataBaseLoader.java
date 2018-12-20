@@ -37,4 +37,8 @@ public class DataBaseLoader {
 		if(product == null) throw new Exception("Not Product Found");
 		return product;
 	}
+
+	public void createProd(Product product){
+		repository.save(product);
+	}
 }

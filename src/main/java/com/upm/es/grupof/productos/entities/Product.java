@@ -21,4 +21,8 @@ public class Product {
 		this.category = category;
 		this.name = name;
 	}
+
+	public String getName(){
+		return "";
+	}
 }
