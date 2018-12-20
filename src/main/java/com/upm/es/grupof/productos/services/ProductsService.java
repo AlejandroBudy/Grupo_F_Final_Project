@@ -23,5 +23,11 @@ public class ProductsService {
 	}
 
 	public void deleteProduct(Product product){
+        try {
+            if (this.dataBase.getProductByName(product.getName()) == null) {
+                this.dataBase.deleteProduct(product);
+            }
+        }catch(Exception e){
+        }
 	}
 }

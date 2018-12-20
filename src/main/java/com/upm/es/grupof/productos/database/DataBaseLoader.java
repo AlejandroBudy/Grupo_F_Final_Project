@@ -39,5 +39,6 @@ public class DataBaseLoader {
 	}
 
 	public void deleteProduct(Product product){
+		repository.delete(product);
 	}
 }
