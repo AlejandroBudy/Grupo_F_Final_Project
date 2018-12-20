@@ -3,10 +3,11 @@ package com.upm.es.grupof.productos.entities;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "product")
 public class Product {
 
 	@Id
-	@GeneratedValue( strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	@Enumerated(EnumType.STRING)
