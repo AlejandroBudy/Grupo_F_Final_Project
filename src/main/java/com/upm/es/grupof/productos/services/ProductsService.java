@@ -22,5 +22,6 @@ public class ProductsService {
 		return null;
 	}
 
-
+	public void deleteProduct(Product product){
+	}
 }

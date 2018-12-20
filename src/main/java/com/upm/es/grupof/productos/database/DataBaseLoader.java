@@ -37,4 +37,7 @@ public class DataBaseLoader {
 		if(product == null) throw new Exception("Not Product Found");
 		return product;
 	}
+
+	public void deleteProduct(Product product){
+	}
 }
