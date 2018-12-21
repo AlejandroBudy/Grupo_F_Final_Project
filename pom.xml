@@ -15,7 +15,7 @@
 	<name>grupof</name>
 	<url>http://piedrafita.ls.fi.upm.es:8080/grupof/</url>
 
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<description>F Group final project for MUII </description>
 
 	<properties>
