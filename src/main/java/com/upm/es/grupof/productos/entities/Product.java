@@ -10,8 +10,10 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
+
 	@Enumerated(EnumType.STRING)
 	private Category category;
+
 	private String name;
 
 
@@ -22,7 +24,19 @@ public class Product {
 		this.name = name;
 	}
 
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
 	public String getName() {
 		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

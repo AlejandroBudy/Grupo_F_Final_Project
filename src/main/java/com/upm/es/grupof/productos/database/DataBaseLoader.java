@@ -33,9 +33,8 @@ public class DataBaseLoader {
 
 	public Product getProductByName(String name) throws Exception {
 		List<Product> productList = repository.findByName(name);
-		Product product = productList.iterator().next();
-		if(product == null) throw new Exception("Not Product Found");
-		return product;
+		if(productList == null || productList.size() == 0) throw new Exception("Not Product Found");
+		return productList.iterator().next();
 	}
 
 	public void deleteProduct(Product product){

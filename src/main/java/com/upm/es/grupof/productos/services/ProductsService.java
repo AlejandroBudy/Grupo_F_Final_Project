@@ -11,7 +11,7 @@ public class ProductsService {
 
 
 	@Autowired
-	private DataBaseLoader dataBase;
+	DataBaseLoader dataBase;
 
 	public Product getProductByName(String name) {
 		try {
