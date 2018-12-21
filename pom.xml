@@ -15,7 +15,7 @@
 	<name>grupof</name>
 	<url>http://piedrafita.ls.fi.upm.es:8080/grupof/</url>
 
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<description>F Group final project for MUII </description>
 
 	<properties>
@@ -44,6 +44,10 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
 		</dependency>
 	</dependencies>
 
