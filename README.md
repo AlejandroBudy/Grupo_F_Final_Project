@@ -2,7 +2,7 @@
 
 Este repositorio contiene el proyecto final realizado por el **Grupo F** de la asignatura _Profundización en Ingeniería del Software_ 
 
-Toda la información técnica [wiki](https://github.com/GRISE-UPM/Grupo_B_CRUDMPR/wiki)
+Toda la información técnica [wiki](https://github.com/GRISE-UPM/Grupo_F_Final_Project/wiki)
 
 ## Miembros 👨‍💻
 * [Alejandro Torres Atochero](https://github.com/AlejandroBudy)
