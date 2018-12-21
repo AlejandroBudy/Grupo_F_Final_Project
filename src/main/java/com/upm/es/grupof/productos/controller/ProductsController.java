@@ -29,7 +29,7 @@ public class ProductsController {
     @RequestMapping(method = RequestMethod.DELETE,
             consumes = "application/json",
             produces = "application/json")
-    public void deleteProduct(@RequestBody Product product) throws Exception {
+    public void deleteProduct(@RequestBody Product product) throws  Exception{
 	    this.productsService.deleteProduct(product);
     }
 

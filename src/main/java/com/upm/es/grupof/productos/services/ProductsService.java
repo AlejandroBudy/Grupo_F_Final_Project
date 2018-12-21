@@ -22,12 +22,8 @@ public class ProductsService {
 		return null;
 	}
 
-	public void deleteProduct(Product product){
-        try {
-            if (this.dataBase.getProductByName(product.getName()) != null) {
-                this.dataBase.deleteProduct(product);
-            }
-        }catch(Exception e){
-        }
+	public int deleteProduct(Product product) throws Exception{
+	    this.dataBase.deleteProduct(product);
+	    return 0;
 	}
 }

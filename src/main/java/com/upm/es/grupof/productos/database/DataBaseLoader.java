@@ -37,7 +37,9 @@ public class DataBaseLoader {
 		return productList.iterator().next();
 	}
 
-	public void deleteProduct(Product product){
+	public int deleteProduct(Product product) throws Exception{
+		getProductByName(product.getName());
 		repository.delete(product);
+		return 0;
 	}
 }

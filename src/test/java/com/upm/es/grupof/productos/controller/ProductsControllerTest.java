@@ -21,12 +21,15 @@ public class ProductsControllerTest {
 
 	@Mock
 	private ProductsService service;
+    private Product nonExistingProduct;
 
 	@Before
-	public void setUp(){
+	public void setUp() throws Exception{
 		MockitoAnnotations.initMocks(this);
+        this.nonExistingProduct = new Product(Category.COMIDA, "IDontExist");
 		when(this.service.getProductByName("jeans"))
 				.thenReturn(new Product(Category.ROPA, "jeans"));
+		when(this.service.deleteProduct(nonExistingProduct)).thenThrow(new Exception());
 	}
 
 	@Test
@@ -37,4 +40,9 @@ public class ProductsControllerTest {
 		assertEquals(product.getCategory(), Category.ROPA);
 		assertEquals(product.getName(),"jeans");
 	}
+
+	@Test (expected = Exception.class)
+	public void nonExistingProductReturnNegative() throws Exception{
+        this.controller.deleteProduct(nonExistingProduct);
+    }
 }
