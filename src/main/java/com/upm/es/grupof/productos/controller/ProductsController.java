@@ -3,7 +3,6 @@ package com.upm.es.grupof.productos.controller;
 import com.upm.es.grupof.productos.entities.Product;
 import com.upm.es.grupof.productos.services.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
