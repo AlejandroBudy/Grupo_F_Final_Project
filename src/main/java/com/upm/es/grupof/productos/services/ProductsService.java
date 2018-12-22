@@ -22,5 +22,8 @@ public class ProductsService {
 		return null;
 	}
 
-
+	public int deleteProduct(Product product) throws Exception{
+	    this.dataBase.deleteProduct(product);
+	    return 0;
+	}
 }

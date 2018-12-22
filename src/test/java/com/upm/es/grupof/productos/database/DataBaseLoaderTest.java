@@ -49,4 +49,10 @@ public class DataBaseLoaderTest {
 		productList.add(product);
 		return productList;
 	}
+
+	@Test (expected = Exception.class)
+	public void deletingNonExistingProductThrowsException() throws Exception{
+		Product product = new Product(Category.ROPA,"IDontExist");
+		dataBaseLoader.deleteProduct(product);
+	}
 }
