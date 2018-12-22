@@ -52,4 +52,9 @@ public class ProductsServiceTest {
 	public void shouldThrowExceptionIfProductDoesntExist() throws Exception{
 		service.deleteProduct(nonExistingProduct);
 	}
+
+	@Test
+	public void shouldCreateNonExistingProduct() throws Exception {
+		service.createProduct(nonExistingProduct);
+	}
 }

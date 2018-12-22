@@ -45,4 +45,9 @@ public class ProductsControllerTest {
 	public void nonExistingProductReturnNegative() throws Exception{
         this.controller.deleteProduct(nonExistingProduct);
     }
+
+    @Test
+	public void shouldFinishOkWhenCreatedOk() throws Exception {
+		this.controller.createProduct(new Product(Category.HERRAMIENTAS, "clavo"));
+	}
 }

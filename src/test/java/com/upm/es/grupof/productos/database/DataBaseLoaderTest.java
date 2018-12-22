@@ -55,4 +55,9 @@ public class DataBaseLoaderTest {
 		Product product = new Product(Category.ROPA,"IDontExist");
 		dataBaseLoader.deleteProduct(product);
 	}
+
+	@Test
+	public void shouldCreateNonExistingProduct(){
+		dataBaseLoader.createProd(new Product(Category.HERRAMIENTAS, "destornillador"));
+	}
 }
