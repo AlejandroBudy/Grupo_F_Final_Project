@@ -33,4 +33,9 @@ public class ProductsController {
 	    this.productsService.deleteProduct(product);
     }
 
+	public void updateProduct(@RequestBody Product product, @RequestBody Category category,
+							  @RequestBody String name) throws  Exception{
+		this.productsService.updateProduct(product, category, name);
+	}
+
 }
