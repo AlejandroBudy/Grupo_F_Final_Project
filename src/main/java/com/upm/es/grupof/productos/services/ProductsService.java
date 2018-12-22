@@ -12,7 +12,7 @@ public class ProductsService {
 
 
 	@Autowired
-	private DataBaseLoader dataBase;
+	DataBaseLoader dataBase;
 
 	public Product getProductByName(String name) {
 		try {
@@ -23,6 +23,7 @@ public class ProductsService {
 		return null;
 	}
 
+
 	public void createProduct(Product product) throws Exception {
 
 		if (this.dataBase.getProductByName(product.getName()) == null){
@@ -31,6 +32,10 @@ public class ProductsService {
 		}
 
 	}
-
+  
+	public int deleteProduct(Product product) throws Exception{
+	    this.dataBase.deleteProduct(product);
+	    return 0;
+	}
 
 }
