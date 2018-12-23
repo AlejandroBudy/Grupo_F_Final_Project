@@ -52,7 +52,31 @@ public class DataBaseLoaderTest {
 
 	@Test (expected = Exception.class)
 	public void deletingNonExistingProductThrowsException() throws Exception{
-		Product product = new Product(Category.ROPA,"IDontExist");
+		Product product = new Product(Category.ROPA,"ggg");
 		dataBaseLoader.deleteProduct(product);
+	}
+
+	@Test
+	public void productCorrectlyDeletedDoesntThrowException() throws  Exception{
+		Product existingProduct = new Product(Category.ROPA, "Jeans");
+		dataBaseLoader.deleteProduct(existingProduct);
+	}
+
+	@Test (expected = Exception.class)
+	public void updatingNonExistingProductsThrowsException() throws Exception{
+		Product existingProduct = new Product(Category.ROPA, "ggg");
+		dataBaseLoader.updateProduct(existingProduct, Category.ROPA, "nuevo");
+	}
+
+	@Test (expected = Exception.class)
+	public void updatingExistingProductWithDifferentCategoryThrowsException() throws Exception{
+		Product existingProduct = new Product(Category.COMIDA, "Jeans");
+		dataBaseLoader.updateProduct(existingProduct, Category.ROPA, "nuevo");
+	}
+
+	@Test
+	public void updatingExistingProductWorksCorrectly() throws Exception{
+		Product existingProduct = new Product(Category.ROPA, "Jeans");
+		dataBaseLoader.updateProduct(existingProduct, Category.ROPA, "nuevo");
 	}
 }
