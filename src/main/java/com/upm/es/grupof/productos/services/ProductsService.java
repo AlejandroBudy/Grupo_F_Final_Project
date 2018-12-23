@@ -38,4 +38,7 @@ public class ProductsService {
 	    return 0;
 	}
 
+	public void updateProduct(Product oldProduct, Category category, String name) throws Exception{
+        this.dataBase.updateProduct(oldProduct, category, name);
+	}
 }

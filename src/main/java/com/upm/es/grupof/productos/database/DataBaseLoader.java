@@ -46,4 +46,14 @@ public class DataBaseLoader {
 	public void createProd(Product product){
 		repository.save(product);
 	}
+	public void updateProduct(Product oldProduct, Category newCategory, String newName) throws Exception{
+	    Product product = getProductByName(oldProduct.getName());
+	    if (product.getCategory().equals(oldProduct.getCategory())){
+            product.setCategory(newCategory);
+            product.setName(newName);
+        }
+        else {
+            throw new Exception("Product category doesn't match");
+        }
+    }
 }

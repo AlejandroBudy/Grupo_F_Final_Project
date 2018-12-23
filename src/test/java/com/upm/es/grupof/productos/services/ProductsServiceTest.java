@@ -8,9 +8,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import static com.upm.es.grupof.productos.entities.Category.COMIDA;
 import static com.upm.es.grupof.productos.entities.Category.ROPA;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -24,15 +26,19 @@ public class ProductsServiceTest {
 	private ProductsService service;
 	private Product productReturn;
 	private Product nonExistingProduct;
+	private Product newProduct;
 
 	@Before
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
 		this.productReturn = new Product(ROPA,"Jeans");
 		this.nonExistingProduct = new Product(ROPA, "IDontExist");
+		this.newProduct = new Product(ROPA, "Chaleco");
 		when(this.dataBaseLoader.getProductByName("Jeans")).thenReturn(productReturn);
+        when(this.dataBaseLoader.getProductByName("Chaleco")).thenReturn(newProduct);
 		when(this.dataBaseLoader.getProductByName("notExists")).thenThrow(new Exception());
 		when(this.dataBaseLoader.deleteProduct(nonExistingProduct)).thenThrow(new Exception());
+		doThrow(new Exception()).when(this.dataBaseLoader).updateProduct(nonExistingProduct,COMIDA,"Macarrones");
 	}
 
 	@Test
@@ -57,4 +63,21 @@ public class ProductsServiceTest {
 	public void shouldCreateNonExistingProduct() throws Exception {
 		service.createProduct(nonExistingProduct);
 	}
+@Test
+    public void productCorrectlyDeleted() throws Exception{
+	    service.deleteProduct(productReturn);
+    }
+
+	@Test (expected = Exception.class)
+	public void exceptionIfProductToUpdateDoesntExist() throws Exception{
+		service.updateProduct(nonExistingProduct, COMIDA, "Macarrones");
+	}
+
+    @Test
+    public void productUpdatedCorrectly() throws Exception{
+        service.updateProduct(productReturn, ROPA, "Chaleco");
+        Product product = service.getProductByName("Chaleco");
+        assertEquals(ROPA, product.getCategory());
+        assertEquals("Chaleco", product.getName());
+    }
 }

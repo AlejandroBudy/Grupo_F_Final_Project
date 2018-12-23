@@ -30,8 +30,6 @@ public class ProductsController {
 		return this.productsService.getProductByName(name);
 	}
 
-
-	//url type /newprod?name=manzana&category=ropa
 	@RequestMapping(method = RequestMethod.POST,
 			consumes = "application/json",
 			produces = "application/json")
@@ -50,5 +48,10 @@ public class ProductsController {
 	    this.productsService.deleteProduct(product);
     }
 
+
+	public void updateProduct(@RequestBody Product product, @RequestBody Category category,
+							  @RequestBody String name) throws  Exception{
+		this.productsService.updateProduct(product, category, name);
+	}
 
 }
