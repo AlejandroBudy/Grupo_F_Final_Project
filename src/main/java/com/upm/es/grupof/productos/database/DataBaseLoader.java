@@ -36,4 +36,21 @@ public class DataBaseLoader {
 		if(productList == null || productList.size() == 0) throw new Exception("Not Product Found");
 		return productList.iterator().next();
 	}
+
+	public int deleteProduct(Product product) throws Exception{
+		getProductByName(product.getName());
+		repository.delete(product);
+		return 0;
+	}
+
+	public void updateProduct(Product oldProduct, Category newCategory, String newName) throws Exception{
+	    Product product = getProductByName(oldProduct.getName());
+	    if (product.getCategory().equals(oldProduct.getCategory())){
+            product.setCategory(newCategory);
+            product.setName(newName);
+        }
+        else {
+            throw new Exception("Product category doesn't match");
+        }
+    }
 }

@@ -2,6 +2,7 @@ package com.upm.es.grupof.productos.services;
 
 
 import com.upm.es.grupof.productos.database.DataBaseLoader;
+import com.upm.es.grupof.productos.entities.Category;
 import com.upm.es.grupof.productos.entities.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,5 +23,12 @@ public class ProductsService {
 		return null;
 	}
 
+	public int deleteProduct(Product product) throws Exception{
+	    this.dataBase.deleteProduct(product);
+	    return 0;
+	}
 
+	public void updateProduct(Product oldProduct, Category category, String name) throws Exception{
+        this.dataBase.updateProduct(oldProduct, category, name);
+	}
 }
