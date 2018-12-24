@@ -58,9 +58,9 @@ public class DataBaseLoaderTest {
 
 	@Test
 	public void shouldCreateNonExistingProduct(){
-		dataBaseLoader.createProd(new Product(Category.HERRAMIENTAS, "destornillador"));
+		dataBaseLoader.createProd(new Product(Category.HERRAMIENTAS, "destornillador"));}
 
-  @Test  
+	@Test
 	public void productCorrectlyDeletedDoesntThrowException() throws  Exception{
 		Product existingProduct = new Product(Category.ROPA, "Jeans");
 		dataBaseLoader.deleteProduct(existingProduct);

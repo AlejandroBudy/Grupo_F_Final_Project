@@ -34,19 +34,16 @@ public class ProductsController {
 			consumes = "application/json",
 			produces = "application/json")
 	public void createProduct(@RequestBody Product product) throws Exception {
-		Category category;
 		this.productsService.createProduct(product);
-
-
 	}
 
 
-    @RequestMapping(method = RequestMethod.DELETE,
-            consumes = "application/json",
-            produces = "application/json")
-    public void deleteProduct(@RequestBody Product product) throws  Exception{
-	    this.productsService.deleteProduct(product);
-    }
+	@RequestMapping(method = RequestMethod.DELETE,
+			consumes = "application/json",
+			produces = "application/json")
+	public void deleteProduct(@RequestBody Product product) throws  Exception{
+		this.productsService.deleteProduct(product);
+	}
 
 
 	public void updateProduct(@RequestBody Product product, @RequestBody Category category,
