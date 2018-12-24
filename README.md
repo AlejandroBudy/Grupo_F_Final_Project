@@ -1,3 +1,4 @@
+
 # PROYECTO FINAL GRUPO F
 
 Este repositorio contiene el proyecto final realizado por el **Grupo F** de la asignatura _Profundización en Ingeniería del Software_ 
@@ -27,8 +28,9 @@ java -jar {project_dir}/target/grupof-0.0.1-SNAPSHOT.war
 
 Una vez levantada la aplicación se publica la api la url  http://localhost:8080/products. 
 
-Para probar la api seguir las espicificaciones descritas en la [wiki](https://github.com/GRISE-UPM/Grupo_B_CRUDMPR/wiki)
+Para probar la api seguir las espicificaciones descritas en la [wiki](https://github.com/GRISE-UPM/Grupo_F_Final_Project/wiki)
 
 
 ---
 _Universidad Politécinca de Madrid_
+

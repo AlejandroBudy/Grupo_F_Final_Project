@@ -52,6 +52,11 @@ public class ProductsControllerTest {
         this.controller.deleteProduct(nonExistingProduct);
     }
 
+
+    @Test
+	public void shouldFinishOkWhenCreatedOk() throws Exception {
+		this.controller.createProduct(new Product(Category.HERRAMIENTAS, "clavo"));
+	}
     @Test (expected = Exception.class)
 	public void updatingNonExistingProductThrowsException() throws Exception{
 		this.controller.updateProduct(nonExistingProduct, Category.ROPA, "nuevo");

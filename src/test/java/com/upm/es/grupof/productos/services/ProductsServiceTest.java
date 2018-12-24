@@ -60,6 +60,10 @@ public class ProductsServiceTest {
 	}
 
 	@Test
+	public void shouldCreateNonExistingProduct() throws Exception {
+		service.createProduct(nonExistingProduct);
+	}
+@Test
     public void productCorrectlyDeleted() throws Exception{
 	    service.deleteProduct(productReturn);
     }
