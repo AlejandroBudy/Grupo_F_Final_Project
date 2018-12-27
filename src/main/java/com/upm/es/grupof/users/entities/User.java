@@ -64,4 +64,12 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public List<GrantedAuthority> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<GrantedAuthority> roles) {
+		this.roles = roles;
+	}
 }

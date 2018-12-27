@@ -70,4 +70,8 @@ public class DataBaseLoader {
             throw new Exception("Product category doesn't match");
         }
     }
+
+	public User getUserByMail(String email) {
+		return userRepository.findByMail(email);
+	}
 }

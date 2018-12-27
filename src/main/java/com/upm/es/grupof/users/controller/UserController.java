@@ -28,8 +28,8 @@ public class UserController {
 	method = RequestMethod.POST,
 	consumes = "application/json",
 	produces = "application/json")
-	public void login(){
-
+	public void login(@RequestBody User user){
+		this.service.logUserIn(user);
 	}
 
 
