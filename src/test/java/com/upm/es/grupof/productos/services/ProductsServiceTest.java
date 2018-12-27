@@ -1,6 +1,6 @@
 package com.upm.es.grupof.productos.services;
 
-import com.upm.es.grupof.productos.database.DataBaseLoader;
+import com.upm.es.grupof.database.DataBaseLoader;
 import com.upm.es.grupof.productos.entities.Product;
 import org.junit.Before;
 import org.junit.Test;
