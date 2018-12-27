@@ -46,8 +46,11 @@ public class ProductsController {
 	}
 
 
-	public void updateProduct(@RequestBody Product product, @RequestBody Category category,
-							  @RequestBody String name) throws  Exception{
+	@RequestMapping( value = "/{name}/{category}",
+			method = RequestMethod.PUT,
+			consumes = "application/json")
+	public void updateProduct(@RequestBody Product product, @PathVariable("category") Category category,
+							  @PathVariable("name") String name) throws  Exception{
 		this.productsService.updateProduct(product, category, name);
 	}
 

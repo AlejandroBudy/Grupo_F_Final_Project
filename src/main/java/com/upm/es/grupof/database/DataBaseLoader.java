@@ -1,4 +1,4 @@
-package com.upm.es.grupof.productos.database;
+package com.upm.es.grupof.database;
 
 import com.upm.es.grupof.productos.entities.Category;
 import com.upm.es.grupof.productos.entities.Product;
@@ -46,6 +46,7 @@ public class DataBaseLoader {
 	public void createProd(Product product){
 		repository.save(product);
 	}
+
 	public void updateProduct(Product oldProduct, Category newCategory, String newName) throws Exception{
 	    Product product = getProductByName(oldProduct.getName());
 	    if (product.getCategory().equals(oldProduct.getCategory())){
