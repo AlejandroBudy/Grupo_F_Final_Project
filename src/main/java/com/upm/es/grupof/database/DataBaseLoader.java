@@ -78,4 +78,6 @@ public class DataBaseLoader {
 	public void deleteUser(User userInDataBase) {
 		userRepository.delete(userInDataBase);
 	}
+
+	public void createUser(User user) { userRepository.save(user);}
 }

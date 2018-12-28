@@ -39,4 +39,10 @@ public class UserController {
 	public void deleteUser(@RequestBody User user){
 		this.service.deleteUser(user);
 	}
+
+	@RequestMapping(value = "/create",
+			method = RequestMethod.POST,
+			consumes = "application/json",
+			produces = "application/json")
+	public void createUser(@RequestBody User user) { this.service.createUser(user);}
 }
