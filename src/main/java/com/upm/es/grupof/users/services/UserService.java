@@ -26,6 +26,13 @@ public class UserService {
 		this.verifyCorrectPassword(user, userInDataBase);
 	}
 
+	public void deleteUser(User user) {
+		User userInDataBase = dataBaseLoader.getUserByMail(user.getEmail());
+		this.verifyMailExists(userInDataBase);
+		this.verifyCorrectPassword(user, userInDataBase);
+		this.dataBaseLoader.deleteUser(userInDataBase);
+	}
+
 	private void verifyCorrectPassword(User user, User userInDataBase) {
 		if(!isEncrypted(user.getPassword()) && !new BCryptPasswordEncoder().matches(user.getPassword(),userInDataBase.getPassword()))
 			throw new BadCredentialsException("Password doesn't match");
