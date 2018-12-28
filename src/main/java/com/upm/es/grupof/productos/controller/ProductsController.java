@@ -4,14 +4,7 @@ import com.upm.es.grupof.productos.entities.Category;
 import com.upm.es.grupof.productos.entities.Product;
 import com.upm.es.grupof.productos.services.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.web.bind.annotation.*;
-
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
@@ -46,8 +39,11 @@ public class ProductsController {
 	}
 
 
-	public void updateProduct(@RequestBody Product product, @RequestBody Category category,
-							  @RequestBody String name) throws  Exception{
+	@RequestMapping( value = "/{name}/{category}",
+			method = RequestMethod.PUT,
+			consumes = "application/json")
+	public void updateProduct(@RequestBody Product product, @PathVariable("category") Category category,
+							  @PathVariable("name") String name) throws  Exception{
 		this.productsService.updateProduct(product, category, name);
 	}
 
