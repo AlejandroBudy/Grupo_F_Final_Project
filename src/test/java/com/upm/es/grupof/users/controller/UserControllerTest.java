@@ -39,8 +39,11 @@ public class UserControllerTest {
 				"e@e.com",
 				"test", Arrays.asList(userRoles));
 		doNothing().when(this.service).logUserIn(this.existing_user);
+		doNothing().when(this.service).deleteUser(this.existing_user);
 		doThrow(new BadCredentialsException("Bad credentials")).
 				when(this.service).logUserIn(this.non_existing_user);
+		doThrow(new BadCredentialsException("Bad credentials")).
+				when(this.service).deleteUser(this.non_existing_user);
 	}
 
 	@Test
@@ -51,5 +54,15 @@ public class UserControllerTest {
 	@Test(expected = BadCredentialsException.class)
 	public void shouldThrowBadCredentialsExceptionWhenUserNotExists(){
 		this.controller.login(this.non_existing_user);
+	}
+
+	@Test
+	public void shouldDeleteWhenUserExists(){
+		this.controller.deleteUser(this.existing_user);
+	}
+
+	@Test(expected = BadCredentialsException.class)
+	public void shouldThrowBadCredentialsExceptionWhenDeleteUserNotExists(){
+		this.controller.deleteUser(this.non_existing_user);
 	}
 }

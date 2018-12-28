@@ -18,6 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 public class DataBaseLoaderTest {
@@ -38,6 +39,7 @@ public class DataBaseLoaderTest {
 				.thenReturn(null);
 		when(this.userRepository.findByMail("atorresato@gmail.com"))
 				.thenReturn(this.buildCorrectUser());
+		doNothing().when(this.userRepository).delete(this.buildCorrectUser());
 
 	}
 
@@ -91,6 +93,12 @@ public class DataBaseLoaderTest {
 	public void shouldReturnCorrectUser(){
 		this.dataBaseLoader.getUserByMail("atorresato@gmail.com");
 	}
+
+	@Test
+	public void shouldDeleteUser(){
+		this.dataBaseLoader.deleteUser(this.buildCorrectUser());
+	}
+
 
 	private List<Product> buildProductList(){
 		Product product = new Product(Category.ROPA,"Jeans");

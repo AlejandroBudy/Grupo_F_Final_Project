@@ -14,6 +14,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 public class UserServiceTest {
@@ -31,14 +32,14 @@ public class UserServiceTest {
 				thenReturn(this.buildCorrectUser());
 		when(this.dataBaseLoader.getUserByMail("a@a.com")).
 				thenReturn(null);
+		doNothing().when(this.dataBaseLoader).deleteUser(this.getUserMockedPass());
 	}
 
 	@Test
 	public void shouldReturnUser(){
-		User user = this.buildCorrectUser();
-		user.setPassword("test");
-		this.service.logUserIn(user);
+		this.service.logUserIn(this.getUserMockedPass());
 	}
+
 	@Test
 	public void shouldThrowExceptionUserNotExists(){
 		try{
@@ -47,6 +48,7 @@ public class UserServiceTest {
 			assertEquals(e.getMessage(),"User not exits");
 		}
 	}
+
 	@Test
 	public void shouldThrowExceptionBadPassword(){
 		try{
@@ -56,6 +58,11 @@ public class UserServiceTest {
 		}
 	}
 
+	@Test
+	public void shouldDeleteUserOk(){
+		this.service.deleteUser(this.getUserMockedPass());
+	}
+	
 	private User buildInCorrectUser(){
 		GrantedAuthority[] userRoles = { new SimpleGrantedAuthority("ROLE_USER") };
 		return new User("Alex",
@@ -63,6 +70,7 @@ public class UserServiceTest {
 				"a@a.com",
 				"test", Arrays.asList(userRoles));
 	}
+
 	private User buildCorrectUser(){
 		GrantedAuthority[] userRoles = { new SimpleGrantedAuthority("ROLE_USER") };
 		return new User("Alex",
@@ -76,5 +84,10 @@ public class UserServiceTest {
 				"Torres",
 				"atorresato@gmail.com",
 				"test2", Arrays.asList(userRoles));
+	}
+	private User getUserMockedPass() {
+		User user = this.buildCorrectUser();
+		user.setPassword("test");
+		return user;
 	}
 }

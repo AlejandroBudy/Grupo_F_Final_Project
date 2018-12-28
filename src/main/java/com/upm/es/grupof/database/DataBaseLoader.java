@@ -74,4 +74,8 @@ public class DataBaseLoader {
 	public User getUserByMail(String email) {
 		return userRepository.findByMail(email);
 	}
+
+	public void deleteUser(User userInDataBase) {
+		userRepository.delete(userInDataBase);
+	}
 }

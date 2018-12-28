@@ -32,8 +32,11 @@ public class UserController {
 		this.service.logUserIn(user);
 	}
 
-
-	public void deleteUser(){
-
+	@RequestMapping(value = "/delete",
+			method = RequestMethod.POST,
+			consumes = "application/json",
+			produces = "application/json")
+	public void deleteUser(@RequestBody User user){
+		this.service.deleteUser(user);
 	}
 }
