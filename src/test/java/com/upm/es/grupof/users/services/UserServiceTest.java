@@ -62,6 +62,18 @@ public class UserServiceTest {
 	public void shouldDeleteUserOk(){
 		this.service.deleteUser(this.getUserMockedPass());
 	}
+
+	@Test
+	public void alreadyExistingUserShouldThrowExceptionWhenCreating() {
+		try {
+			this.service.createUser(this.buildCorrectUser());
+		}catch (BadCredentialsException e) {
+			assertEquals(e.getMessage(),"User already exists");
+		}
+	}
+
+	@Test
+	public void shouldCreateUserOk() { this.service.createUser(this.buildInCorrectUser()); }
 	
 	private User buildInCorrectUser(){
 		GrantedAuthority[] userRoles = { new SimpleGrantedAuthority("ROLE_USER") };

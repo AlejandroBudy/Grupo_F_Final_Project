@@ -29,10 +29,13 @@ public class DataBaseLoaderTest {
 	private ProductsRepository repository;
 	@Mock
 	private UserRepository userRepository;
+	User nonExistingUser;
 
 	@Before
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
+		GrantedAuthority[] userRolesForNonExistingUser = { new SimpleGrantedAuthority("ROLE_USER") };
+		nonExistingUser = new User( "Dont", "exist", "idontexist@gmail.com", "password", Arrays.asList(userRolesForNonExistingUser));
 		when(this.repository.findByName("Jeans"))
 				.thenReturn(this.buildProductList());
 		when(this.repository.findByName("ggg"))
@@ -40,7 +43,7 @@ public class DataBaseLoaderTest {
 		when(this.userRepository.findByMail("atorresato@gmail.com"))
 				.thenReturn(this.buildCorrectUser());
 		doNothing().when(this.userRepository).delete(this.buildCorrectUser());
-
+		when(this.userRepository.save(nonExistingUser)).thenReturn(nonExistingUser);
 	}
 
 	@Test
@@ -99,6 +102,8 @@ public class DataBaseLoaderTest {
 		this.dataBaseLoader.deleteUser(this.buildCorrectUser());
 	}
 
+	@Test
+	public void shouldCreateUser() { this.dataBaseLoader.createUser(nonExistingUser); }
 
 	private List<Product> buildProductList(){
 		Product product = new Product(Category.ROPA,"Jeans");
@@ -112,6 +117,14 @@ public class DataBaseLoaderTest {
 		return new User("Alex",
 				"Torres",
 				"a@a.com",
+				"test", Arrays.asList(userRoles));
+	}
+
+	private User buildNonExistingUser(){
+		GrantedAuthority[] userRoles = { new SimpleGrantedAuthority("ROLE_USER") };
+		return new User("Dont",
+				"Exist",
+				"hello@a.com",
 				"test", Arrays.asList(userRoles));
 	}
 }

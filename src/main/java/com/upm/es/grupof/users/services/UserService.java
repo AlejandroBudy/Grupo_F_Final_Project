@@ -43,7 +43,7 @@ public class UserService {
 	}
 
 	private void verifyMailExists(User userInDataBase) {
-		if(userInDataBase == null)throw new BadCredentialsException("User not exists");
+		if(userInDataBase == null)throw new BadCredentialsException("User not exits");
 	}
 
 	private void verifyMailDoesntExist(User user) {
