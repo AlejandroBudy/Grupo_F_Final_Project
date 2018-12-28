@@ -18,6 +18,8 @@ public class UserService {
 
 
 	public void createUser(User user) {
+		this.verifyMailDoesntExist(user);
+		dataBaseLoader.createUser(user);
 	}
 
 	public void logUserIn(User user) {
@@ -41,7 +43,12 @@ public class UserService {
 	}
 
 	private void verifyMailExists(User userInDataBase) {
-		if(userInDataBase == null)throw new BadCredentialsException("User not exits");
+		if(userInDataBase == null)throw new BadCredentialsException("User not exists");
+	}
+
+	private void verifyMailDoesntExist(User user) {
+		User userInDataBase = dataBaseLoader.getUserByMail(user.getEmail());
+		if(userInDataBase != null) throw new BadCredentialsException("User already exists");
 	}
 
 	private boolean isEncrypted(String password){
